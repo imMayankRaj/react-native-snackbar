@@ -40,6 +40,12 @@ interface SnackBarOptions {
   duration?: number;
 
   /**
+   * Defines the postion of snackbar on the screen.
+   * Must be one of Snackbar.GRAVITY_TOP, Snackbar.GRAVITY_BOTTOM, or Snackbar.GRAVITY_CENTER.
+   */
+
+  gravity?:number;
+  /**
    * Background color of the snackbar
    * Accepts color strings such as hex, literals, rgba
    */
@@ -65,6 +71,10 @@ export const LENGTH_LONG: number;
  * Snackbar duration that lasts forever (until a new Snackbar is shown).
  */
 export const LENGTH_INDEFINITE: number;
+
+export const GRAVITY_TOP: number;
+export const GRAVITY_BOTTOM: number;
+export const GRAVITY_CENTER: number;
 
 /**
  * Shows a native Snackbar component.

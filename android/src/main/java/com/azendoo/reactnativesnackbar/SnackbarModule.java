@@ -3,8 +3,10 @@ package com.azendoo.reactnativesnackbar;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.design.widget.Snackbar;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.facebook.react.bridge.Callback;
@@ -40,6 +42,9 @@ public class SnackbarModule extends ReactContextBaseJavaModule{
         constants.put("LENGTH_LONG", Snackbar.LENGTH_LONG);
         constants.put("LENGTH_SHORT", Snackbar.LENGTH_SHORT);
         constants.put("LENGTH_INDEFINITE", Snackbar.LENGTH_INDEFINITE);
+        constants.put("GRAVITY_TOP", Gravity.TOP);
+        constants.put("GRAVITY_BOTTOM", Gravity.BOTTOM);
+        constants.put("GRAVITY_CENTER", Gravity.CENTER);
 
         return constants;
     }
@@ -113,6 +118,13 @@ public class SnackbarModule extends ReactContextBaseJavaModule{
             ReadableMap actionDetails = options.getMap("action");
             snackbar.setAction(actionDetails.getString("title"), onClickListener);
             snackbar.setActionTextColor(actionDetails.getInt("color"));
+        }
+
+        if(options.hasKey("gravity")) {
+            View snackbarView = snackbar.getView();
+            FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)snackbarView.getLayoutParams();
+            params.gravity = options.getInt("gravity");
+            snackbarView.setLayoutParams(params);
         }
 
         // For older devices, explicitly set the text color; otherwise it may appear dark gray.

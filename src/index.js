@@ -11,6 +11,7 @@ type Action = {
 type SnackBarOptions = {
   title: string,
   duration?: number,
+  gravity?:number,
   backgroundColor?: string,
   action?: Action,
 };
@@ -19,6 +20,9 @@ type ISnackBar = {
   LENGTH_LONG: number,
   LENGTH_SHORT: number,
   LENGTH_INDEFINITE: number,
+  GRAVITY_TOP: number,
+  GRAVITY_CENTER: number,
+  GRAVITY_BOTTOM: number,
   show: (options: SnackBarOptions) => void,
   dismiss: () => void,
 };
@@ -28,6 +32,9 @@ const SnackBar: ISnackBar = {
   LENGTH_LONG: NativeModules.RNSnackbar.LENGTH_LONG,
   LENGTH_SHORT: NativeModules.RNSnackbar.LENGTH_SHORT,
   LENGTH_INDEFINITE: NativeModules.RNSnackbar.LENGTH_INDEFINITE,
+  GRAVITY_TOP: NativeModules.RNSnackbar.GRAVITY_TOP,
+  GRAVITY_CENTER: NativeModules.RNSnackbar.GRAVITY_CENTER,
+  GRAVITY_BOTTOM: NativeModules.RNSnackbar.GRAVITY_BOTTOM,
 
   show(options: SnackBarOptions) {
     const onPressCallback = (options.action && options.action.onPress) || (() => {});
@@ -44,6 +51,7 @@ const SnackBar: ISnackBar = {
       options.backgroundColor = processColor(options.backgroundColor);
     }
 
+    console.log(options);
     NativeModules.RNSnackbar.show(options, onPressCallback);
   },
 
