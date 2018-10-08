@@ -21,6 +21,7 @@ and when to use them.
 Snackbar.show({
   title: 'Hello world',
   duration: Snackbar.LENGTH_SHORT,
+  gravity: Snackbar.GRAVITY_BOTTOM
 });
 ```
 
@@ -62,6 +63,7 @@ Snackbar.show({
 |-----|-----------|----------------|-------------|
 | `title` | `string` | Required. | The message to show. |
 | `duration` | See below | `Snackbar.LENGTH_SHORT` | How long to display the Snackbar. |
+| `gravity` | See below | `Snackbar.GRAVITY_BOTTOM` | Position of snackbar on the screen |
 | `action` | `object` (described below) | `undefined` (no button) | Optional config for the action button (described below). |
 | `backgroundColor` | `string` or `style` | `undefined` (natively renders as black) | The background color for the whole Snackbar. |
 
@@ -70,6 +72,13 @@ Where `duration` can be one of the following (timing may vary based on device):
 - `Snackbar.LENGTH_SHORT` (just over a second)
 - `Snackbar.LENGTH_LONG` (about three seconds)
 - `Snackbar.LENGTH_INDEFINITE` (stays on screen until the button is pressed)
+
+NOTE : `gravity` prop works only on `Android`
+
+Where `gravity` can be one of the following:
+- `Snackbar.GRAVITY_TOP` (top of the screen)
+- `Snackbar.GRAVITY_CENTER` (center of the screen) 
+- `Snackbar.GRAVITY_BOTTOM` (bottom of the screen) 
 
 And the optional `action` object can contain the following options:
 

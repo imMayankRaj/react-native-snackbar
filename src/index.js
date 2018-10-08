@@ -11,7 +11,7 @@ type Action = {
 type SnackBarOptions = {
   title: string,
   duration?: number,
-  gravity?:number,
+  gravity?: number,
   backgroundColor?: string,
   action?: Action,
 };
@@ -51,7 +51,6 @@ const SnackBar: ISnackBar = {
       options.backgroundColor = processColor(options.backgroundColor);
     }
 
-    console.log(options);
     NativeModules.RNSnackbar.show(options, onPressCallback);
   },
 

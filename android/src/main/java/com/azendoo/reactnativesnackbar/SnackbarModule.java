@@ -120,9 +120,9 @@ public class SnackbarModule extends ReactContextBaseJavaModule{
             snackbar.setActionTextColor(actionDetails.getInt("color"));
         }
 
-        if(options.hasKey("gravity")) {
+        if (options.hasKey("gravity")) {
             View snackbarView = snackbar.getView();
-            FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)snackbarView.getLayoutParams();
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams)snackbarView.getLayoutParams();
             params.gravity = options.getInt("gravity");
             snackbarView.setLayoutParams(params);
         }
